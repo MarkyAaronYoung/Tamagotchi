@@ -1,3 +1,14 @@
 import '../styles/main.scss';
+import eat from './components/eat/eat';
+import fight from './components/fight/fight';
+import play from './components/play/play';
+import sleep from './components/sleep/sleep';
 
-console.error('hi');
+const init = () => {
+  eat.eatCard();
+  fight.fightCard();
+  play.playCard();
+  sleep.sleepCard();
+};
+
+init();
