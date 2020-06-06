@@ -1,6 +1,6 @@
 import utils from '../../helpers/utils';
 
-const energy = 50;
+let energy = 50;
 
 const sleepCard = () => {
   let domString = '';
@@ -11,6 +11,23 @@ const sleepCard = () => {
   `;
   utils.printToDom('#sleep', domString);
 };
+
+const napTime = () => {
+  if (energy === 100) return;
+  energy += 50;
+  if (energy > 100) energy = 100;
+  sleepCard();
+};
+
+const slumberTime = () => {
+  if (energy === 100) return;
+  energy += 60;
+  if (energy > 100) energy = 100;
+  sleepCard();
+};
+
+$('body').on('click', '#nap', napTime);
+$('body').on('click', '#slumber', slumberTime);
 
 export default { sleepCard };
 

@@ -1,16 +1,33 @@
 import utils from '../../helpers/utils';
 
-const strength = 100;
+let strength = 100;
 
 const fightCard = () => {
   let domString = '';
   domString += `
   <h1>FIGHT</h1>
   <h2>Strength: ${strength}</h2>
-  <button id="run">RUN AWAY (BRAVELY)</button><button id="fight">VIOLENCE</button>
+  <button id="run">RUN AWAY (BRAVELY)</button> <button id="stab">VIOLENCE</button>
   `;
   utils.printToDom('#fight', domString);
 };
+
+const runAway = () => {
+  if (strength === 100) return;
+  strength += 1;
+  if (strength > 100) strength = 100;
+  fightCard();
+};
+
+const stab = () => {
+  if (strength === 0) return;
+  strength -= 10;
+  if (strength < 0) strength = 0;
+  fightCard();
+};
+
+$('body').on('click', '#run', runAway);
+$('body').on('click', '#stab', stab);
 
 export default { fightCard };
 // fight component should appear in lower left quadrant
