@@ -1,4 +1,5 @@
 import utils from '../../helpers/utils';
+import './sleep.scss'
 
 let energy = 50;
 
