@@ -1,16 +1,33 @@
 import utils from '../../helpers/utils';
 
-const full = 100;
+let full = 100;
 
 const eatCard = () => {
   let domString = '';
   domString += `
   <h1>NomNom</h1>
   <h2>Fullness Score: ${full}</h2>
-  <button id="nutritious>Nutritious Food</button> <button id="garbage">Edible Garbage</button>
+  <button id="nutritious">Nutritious Food</button> <button id="garbage">Edible Garbage</button>
   `;
   utils.printToDom('#eat', domString);
 };
+
+const eatNutritious = () => {
+  if (full === 100) return;
+  full += 10;
+  if (full > 100) full = 100;
+  eatCard();
+};
+
+const eatGarbage = () => {
+  if (full === 0) return;
+  full -= 3;
+  if (full < 0) full = 0;
+  eatCard();
+};
+
+$('body').on('click', '#nutritious', eatNutritious);
+$('body').on('click', '#garbage', eatGarbage);
 
 export default { eatCard };
 
